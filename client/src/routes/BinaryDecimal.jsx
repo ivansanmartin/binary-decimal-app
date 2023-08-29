@@ -1,18 +1,11 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function BinaryDecimal() {
-
-
+const BinaryDecimal = () => {
     return (
- 
-            <>
-                <h1>Probando router</h1>
-            </>
-    
-
-     
-    
+        <>
+            <h1>Probando router</h1>
+        </>
     );
 }
 
