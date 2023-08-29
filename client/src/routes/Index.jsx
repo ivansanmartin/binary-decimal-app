@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from "react-router-dom";
 import ErrorAuth from "./CompleteAuth";
 import SpinnerLoading from "../components/SpinnerLoading";
+import "./../index.css"
 
 function Index() {
     const { loginWithRedirect, isAuthenticated, isLoading, error, user } =

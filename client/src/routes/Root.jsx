@@ -5,39 +5,42 @@ import SpinnerLoading from "../components/SpinnerLoading";
 import "./../root.css"
 
 function Root() {
-    const { logout, isAuthenticated, isLoading, user } = useAuth0();
+    const { logout, isAuthenticated, isLoading, user} = useAuth0();
+
+    document.body.style.backgroundColor = "#EEEEEE"
 
     if (isLoading) {
         return <SpinnerLoading />;
     }
+
+    console.log(user.sub)
     return isAuthenticated ? (
         <>
-
-           <div className="container-fluid d-flex vh-100 p-5 ">
-             <div className="card d-flex align-items-center h-30 shadow p-3 mb-5 bg-body-tertiary rounded" style={{width: "18rem", background: "#FFF", height: "35vh"}}>
-                <div className="d-flex align-items-center justify-content-center flex-column">
-                    <img src={user.picture} className="card-img-top w-50"/>
-                    <div className="card-body d-flex flex-column align-items-center ">
-                        <h5 className="card-title">{user.nickname}</h5>
-                        <p className="card-text text-center">Bienvenido {user.nickname}, ¡disfruta la aplicación!</p>
-                        <Link className="btn btn-primary" onClick={() =>
-                                logout({
-                                    logoutParams: {
-                                        returnTo: window.location.origin,
-                                    },
-                                })
-                            }
-                        >Cerrar sesión</Link>
+        
+           <div className="content container-fluid d-flex p-5">
+                <div className="card d-flex align-items-center justify-content-center shadow p-3 mb-5 bg-body-tertiary rounded" >
+                    <div className="card-content d-flex align-items-center justify-content-center flex-column">
+                        <img src={user.picture} className="card-img-top w-50"/>
+                        <div className="card-body d-flex flex-column align-items-center">
+                            <h5 className="card-title">{user.nickname}</h5>
+                            <p className="card-text text-center">Bienvenido.</p>
+                            <p className="card-text text-center">¡Disfruta la aplicación!</p>
+                            <Link className="btn btn-danger" onClick={() =>
+                                    logout({
+                                        logoutParams: {
+                                            returnTo: window.location.origin,
+                                        },
+                                    })
+                                }
+                            >Cerrar sesión</Link>
+                        </div>
                     </div>
                 </div>
 
-            </div>
+                
 
-            
-
-            
-            <div className="container-fluid d-flex flex-column align-items-center">
-                <ul className="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+            <div className="nav-root container-fluid d-flex flex-column align-items-center">
+                <ul className="links container-fluid shadow-lg p-3 mb-5 bg-body-tertiary rounded">
                     <li>
                         <Link to="/dashboard/binary-to-decimal" className="btn btn-light">Binario a decimal</Link>
                     </li>
@@ -54,7 +57,7 @@ function Root() {
                 </ul>
 
 
-                <div id="detail" className="container-fluid">
+                <div id="detail" className="detail container-fluid d-flex flex-column align-items-center">
                     <Outlet />
                 </div>
             </div>
@@ -63,6 +66,7 @@ function Root() {
 
            </div>
 
+           
 
 
         </>

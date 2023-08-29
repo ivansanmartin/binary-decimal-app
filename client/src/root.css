@@ -1,29 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
-body {
-    background: #EEEEEE;
-}
 
 * {
     color: #000;
+    font-family: 'Open Sans', sans-serif;
 }
 
+.nav-root {
+    height: 100vh;
+}
 
-
-ul {
+.nav-root ul {
     display: flex;
     gap: 30px;
     list-style: none;
-    width: 90%;
-    height: 70px;
+    width: auto;
+    height: auto;
     justify-content: space-around;
     align-items: center;
-    background: #fff;
 }
 
-ul li a {
+.nav-root ul li a {
     text-decoration: none;
-    color: #000;
     word-wrap: break-word;
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
@@ -31,3 +29,66 @@ ul li a {
 
 
 }
+
+.content {
+    height: auto;
+    width: auto;
+    margin: 5vh;
+}
+
+.content .card {
+    height: auto;
+    max-height: 50vh;
+}
+
+.detail {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.history {
+    width: 80%;
+    height: auto;
+    
+}
+
+.detail .text-transform {
+    width: 50%;
+}
+
+.detail .text-transform textarea {
+    height: 15vh;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        width: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 700px) {
+    .nav-root .links {
+        flex-direction: column;
+    }
+
+    .nav-root .links {
+        width: 100%;
+    }
+
+    .history {
+        width: 100%;
+    }
+
+    .detail .text-transform {
+        width: 100%;
+    }
+
+}
+
+
