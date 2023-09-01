@@ -26,7 +26,7 @@ const useFetch = () => {
             .catch((error) => setError(error))
             .finally(() => setLoading(false))
 
-    }, [dataFetch])
+    }, [dataFetch.url, dataFetch.jsonData])
 
     return {data, loading, error, setDataFetch}
     
