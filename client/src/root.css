@@ -53,6 +53,9 @@
     
 }
 
+.converted {
+    height: auto;
+}
 .detail .text-transform {
     width: 50%;
 }

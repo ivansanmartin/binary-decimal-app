@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import useFetch from "./useFetch";
+
+
+
+// Get number from input
+// Create a hook wich recibe url fetching and number from input
 
 const BinaryDecimal = () => {
+    const [binary, setBinary] = useState("")
+    const {data, loading, error, setDataFetch} = useFetch()
+
+
+    const handleChangeBinary = (e) => {
+        setBinary(e.target.value)
+    }
+
+    
     return (
         <>
             <div className="title container-fluid d-flex flex-column align-items-center">
@@ -16,35 +31,51 @@ const BinaryDecimal = () => {
                 <p className="fw-light fs-6">Introduce el número binario</p>
                 <div className="input-group mb-3">
                     <span className="input-group-text" id="inputGroup-sizing-default">Binario</span>
-                    <input type="number" className="form-control" aria-label="Sizing example input" placeholder="11111111" aria-describedby="inputGroup-sizing-default" />
+                    <input type="number" onChange={handleChangeBinary} className="form-control" aria-label="Sizing example input" placeholder="11111111" aria-describedby="inputGroup-sizing-default" />
                 </div>
 
-                <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#transformModal">Transformar</button>
-
-                <div className="modal fade" id="transformModal" tabIndex="-1" aria-labelledby="trasnformModalLabel" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="transformModalLabel"><i className="fa-solid fa-wand-magic-sparkles"></i> Transformación exitosa </h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            Aquí tienes tu número decimal: 
-                        </div>
-
-                        <div className="modal-body d-flex gap-4 justify-content-center text-primary fw-bold fs-3 mb-4">
+                <button type="button" className="btn btn-success" onClick={() => {
+                    setDataFetch({
+                        url: `https://ivansanmartin.vercel.app/project/api/binary_to_decimal/${binary}`,
+                        method: "GET",
                     
-                            number
+                    })
+                }}>{loading ? 
 
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Guardar en el historial</button>
-                        </div>
-                        </div>
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">Loading...</span>
                     </div>
-                </div>
+                
+                
+                : "Transformar"}</button>
 
+            </div>
+
+            <div>
+                {
+                    data && (
+                        data.ok ? (
+                        <div className="converted container-fluid w-100 d-flex align-items-center flex-column text-light mt-5 shadow p-3 mb-5 bg-success rounded ">
+                            <h4>¡Aquí tienes!</h4>
+                            
+                            <div className="d-flex word-wrap flex-column mt-4">
+                                <p className="text-light">Número decimal: {data.decimal_convert}</p>
+                                <p className="text-light">Fecha de conversión: {data.conversion_date}</p>
+                            </div>
+                            
+                        </div>
+                        )
+                        :
+
+                        (
+
+                        <div class="alert alert-warning mt-5" role="alert">
+                            El número binario no es válido.
+                        </div>
+                        )
+
+                    )
+                }
             </div>
 
             <div className="history d-flex justify-content-center mt-5 bg-light shadow p-3 mb-5 bg-body-tertiary rounded">

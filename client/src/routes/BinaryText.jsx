@@ -61,7 +61,7 @@ const BinaryText = () => {
                                 ></button>
                             </div>
                             <div className="modal-body">
-                                Aquí tienes tu número binario:
+                                Aquí tienes tu texto:
                             </div>
 
                             <div className="modal-body d-flex gap-4 justify-content-center text-primary fw-bold fs-3 mb-4">

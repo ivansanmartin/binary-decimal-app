@@ -42,6 +42,7 @@ function Root() {
             <div className="nav-root container-fluid d-flex flex-column align-items-center">
                 <ul className="links container-fluid shadow-lg p-3 mb-5 bg-body-tertiary rounded">
                     <li>
+                    
                         <Link to="/dashboard/binary-to-decimal" className="btn btn-light">Binario a decimal</Link>
                     </li>
                     <li>
@@ -58,6 +59,7 @@ function Root() {
 
 
                 <div id="detail" className="detail container-fluid d-flex flex-column align-items-center">
+                
                     <Outlet />
                 </div>
             </div>
