@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import useFetch from "src/useFetch";
 
 export const NumbersBinary = ({url, type}) => {
     const [number, setNumber] = useState("")
+    const { user } = useAuth0();
     const {data, loading, error, setDataFetch} = useFetch()
 
 
@@ -70,3 +72,4 @@ export const NumbersBinary = ({url, type}) => {
 }
 
 export default NumbersBinary
+
