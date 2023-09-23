@@ -18,6 +18,7 @@ function Index() {
         return <ErrorAuth />;
     }
 
+
     return (
         <header className="container-fluid d-flex justify-content-around mt-5">
             <div className="logo">

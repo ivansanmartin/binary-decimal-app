@@ -4,6 +4,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import SpinnerLoading from "../components/SpinnerLoading";
 import "./../root.css"
 
+import axios from "axios"
+
 function Root() {
     const { logout, isAuthenticated, isLoading, user} = useAuth0();
 
@@ -13,13 +15,16 @@ function Root() {
         return <SpinnerLoading />;
     }
 
+    console.log(user.email_verified)
+
     console.log(user.sub)
+
     return isAuthenticated ? (
         <>
         
            <div className="content container-fluid d-flex p-5">
                 <div className="card d-flex align-items-center justify-content-center shadow p-3 mb-5 bg-body-tertiary rounded" >
-                    <div className="card-content d-flex align-items-center justify-content-center flex-column">
+                    <div className="card-content  d-flex align-items-center justify-content-center flex-column">
                         <img src={user.picture} className="card-img-top w-50"/>
                         <div className="card-body d-flex flex-column align-items-center">
                             <h5 className="card-title">{user.nickname}</h5>
@@ -43,17 +48,17 @@ function Root() {
                 <ul className="links container-fluid shadow-lg p-3 mb-5 bg-body-tertiary rounded">
                     <li>
                     
-                        <Link to="/dashboard/binary-to-decimal" className="btn btn-light">Binario a decimal</Link>
+                        <Link to="/dashboard/binary-to-decimal" className="btn btn-light text-break">Binario a decimal</Link>
                     </li>
                     <li>
-                        <Link to="/dashboard/decimal-to-binary" className="btn btn-light">Decimal a binario</Link>
+                        <Link to="/dashboard/decimal-to-binary" className="btn btn-light text-break">Decimal a binario</Link>
                     </li>
                     <li>
-                        <Link to="/dashboard/text-to-binary" className="btn btn-light">Texto a binario</Link>
+                        <Link to="/dashboard/text-to-binary" className="btn btn-light text-break">Texto a binario</Link>
                     </li>
 
                     <li>
-                        <Link to="/dashboard/binary-to-text" className="btn btn-light">Binario a texto</Link>
+                        <Link to="/dashboard/binary-to-text" className="btn btn-light text-break">Binario a texto</Link>
                     </li>
                 </ul>
 
