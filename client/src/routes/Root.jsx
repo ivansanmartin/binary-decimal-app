@@ -15,9 +15,6 @@ function Root() {
         return <SpinnerLoading />;
     }
 
-    console.log(user.email_verified)
-
-    console.log(user.sub)
 
     return isAuthenticated ? (
         <>
@@ -26,7 +23,7 @@ function Root() {
                 <div className="card d-flex align-items-center justify-content-center shadow p-3 mb-5 bg-body-tertiary rounded" >
                     <div className="card-content  d-flex align-items-center justify-content-center flex-column">
                         <img src={user.picture} className="card-img-top w-50"/>
-                        <div className="card-body d-flex flex-column align-items-center">
+                        <div className="card-body text-break d-flex flex-column align-items-center">
                             <h5 className="card-title">{user.nickname}</h5>
                             <p className="card-text text-center">Bienvenido.</p>
                             <p className="card-text text-center">¡Disfruta la aplicación!</p>

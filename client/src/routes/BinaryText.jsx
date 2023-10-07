@@ -8,7 +8,7 @@ const BinaryText = () => {
                 <hr className="border border-primary border-2 opacity-50 w-100"></hr>
             </div>
 
-            <div className="text-transform mt-5 d-flex flex-column align-items-center">
+            <div className="text-transform d-flex flex-column align-items-center">
                 <p className="fw-light fs-4">¿Que binario deseas convertir?</p>
 
                 <p className="fw-light fs-6">

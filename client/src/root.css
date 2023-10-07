@@ -38,7 +38,7 @@
 
 .content .card {
     height: auto;
-    max-height: 50vh;
+    width: 25%;
 }
 
 .detail {
@@ -64,6 +64,12 @@
     height: 15vh;
 }
 
+@media screen and (min-width: 1000px) {
+    .content .card {
+        max-height: 50vh;
+    }
+    
+}
 
 @media screen and (max-width: 1000px) {
     .content {
@@ -71,6 +77,10 @@
         align-items: center;
         margin: 0;
         width: 100%;
+    }
+
+    .content .card {
+        width: 30%;
     }
     
 }
@@ -90,6 +100,11 @@
 
     .detail .text-transform {
         width: 100%;
+    }
+
+    .content .card {
+        width: 100%;
+        height: auto;
     }
 
 }
