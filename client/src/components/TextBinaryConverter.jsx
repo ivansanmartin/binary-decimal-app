@@ -30,7 +30,8 @@ const TextBinaryConverter = ({url, type}) => {
                         method: "POST",
                         jsonData: {
                             text: value
-                        }
+                        },
+                        typeNumber: type
                     
                     })
                 }}>{loading ? 

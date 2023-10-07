@@ -7,11 +7,12 @@ require("dotenv").config();
 
 router.use(express.json());
 
-
 const verifyExistProperty = (listOfProperties, comparePropertiesList) => {
-    return JSON.stringify(listOfProperties) == JSON.stringify(comparePropertiesList)
-
-}
+    return (
+        JSON.stringify(listOfProperties) ==
+        JSON.stringify(comparePropertiesList)
+    );
+};
 
 const connectDbMongo = async () => {
     try {
@@ -25,12 +26,14 @@ const connectDbMongo = async () => {
 
 connectDbMongo();
 
-
 const userSchema = new mongoose.Schema(
     {
         id: String,
         nickname: String,
-        data: [],
+        bin_dec: [],
+        dec_bin: [],
+        bin_text: [],
+        text_bin: [],
     },
 
     {
@@ -43,18 +46,20 @@ const User = mongoose.model("User", userSchema);
 router.post("/api/save-user", async (req, res) => {
     const data = req.body;
 
-    const existProperties = verifyExistProperty(['id_auth0', 'nickname'], Object.keys(data))
+    const existProperties = verifyExistProperty(
+        ["id_auth0", "nickname"],
+        Object.keys(data)
+    );
 
     if (!existProperties) {
         res.status(400).json({
             ok: false,
-            error: "The structure json is not correctly"
-        })
-        return
+            error: "The structure json is not correctly",
+        });
+        return;
     }
 
     const findExists = await User.findOne({ id: data.id_auth0 });
-    console.log(findExists);
 
     if (findExists == null) {
         const newUserRegister = new User({
@@ -74,29 +79,28 @@ router.post("/api/save-user", async (req, res) => {
 });
 
 router.post("/api/binary-decimal/save-data", async (req, res) => {
-
-    const data = req.body
-    const date = new Date()
-
-    const existProperties = verifyExistProperty(['id_auth0', 'binary', 'converted_decimal'], Object.keys(data))
+    const data = req.body;
+    const existProperties = verifyExistProperty(
+        ["id_auth0", "fetch"],
+        Object.keys(data)
+    );
 
     if (!existProperties) {
         res.status(400).json({
             ok: false,
-            error: "The structure json is not correctly"
-        })
-        return
-
+            error: "The structure json is not correctly",
+        });
+        return;
     }
 
     await User.updateOne(
-        { id:  data.id_auth0},
+        { id: data.id_auth0 },
         {
             $push: {
-                data: {
-                    binary: data.binary,
-                    converted_decimal: data.converted_decimal,
-                    date_converted: `${date.getDate}/${date.getMonth}/${date.getFullYear}`,
+                bin_dec: {
+                    binary: data.fetch.binary_number,
+                    converted_decimal: data.fetch.decimal_convert,
+                    date_converted: data.fetch.conversion_date,
                 },
             },
         }
@@ -106,5 +110,76 @@ router.post("/api/binary-decimal/save-data", async (req, res) => {
         ok: true,
     });
 });
+
+router.post("/api/decimal-binary/save-data", async (req, res) => {
+    const data = req.body;
+
+    const existProperties = verifyExistProperty(
+        ["id_auth0", "fetch"],
+        Object.keys(data)
+    );
+
+    if (!existProperties) {
+        res.status(400).json({
+            ok: false,
+            error: "The structure json is not correctly",
+        });
+        return;
+    }
+
+    await User.updateOne(
+        { id: data.id_auth0 },
+        {
+            $push: {
+                dec_bin: {
+                    decimal: data.fetch.decimal_number,
+                    converted_binary: data.fetch.binary_convert,
+                    date_converted: data.fetch.conversion_date,
+                },
+            },
+        }
+    );
+
+    res.json({
+        ok: true,
+    });
+});
+
+
+router.post("/api/text-binary/save-data", async (req, res) => {
+    const data = req.body;
+    const existProperties = verifyExistProperty(
+        ["id_auth0", "fetch"],
+        Object.keys(data)
+    );
+
+    if (!existProperties) {
+        res.status(400).json({
+            ok: false,
+            error: "The structure json is not correctly",
+        });
+        return;
+    }
+
+    await User.updateOne(
+        { id: data.id_auth0 },
+        {
+            $push: {
+                text_bin: {
+                    text: data.fetch.text,
+                    text_converted: data.fetch.text_converted,
+                    date_converted: data.fetch.conversion_date
+                },
+            },
+        }
+    );
+
+    res.json({
+        ok: true,
+    });
+
+
+
+})
 
 module.exports = router;
