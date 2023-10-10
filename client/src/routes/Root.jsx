@@ -25,7 +25,7 @@ function Root() {
                         <img src={user.picture} className="card-img-top w-50"/>
                         <div className="card-body text-break d-flex flex-column align-items-center">
                             <h5 className="card-title">{user.nickname}</h5>
-                            <p className="card-text text-center">Bienvenido.</p>
+                            <p className="card-text text-center">Te damos la bienvenida.</p>
                             <p className="card-text text-center">¡Disfruta la aplicación!</p>
                             <Link className="btn btn-danger" onClick={() =>
                                     logout({

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import {DataRecords} from "../components/DataRecords"
+import { useAuth0 } from "@auth0/auth0-react"
 import useFetch from "src/useFetch";
 
 
 const TextBinaryConverter = ({url, type}) => {
     const [value, setValue] = useState("")
+    const { user } = useAuth0();
     const {data, loading, error, setDataFetch} = useFetch()
 
     const handleChangeValue = (e) => {
@@ -19,7 +22,7 @@ const TextBinaryConverter = ({url, type}) => {
                     className="input-group-text"
                     id="inputGroup-sizing-default"
                 >
-                    {type == "text" ? "Texto" : type == "binary" ? "Binario" : undefined}
+                    {type == "text_bin" ? "Texto" : type == "bin_text" ? "Binario" : undefined}
                 </span>
                 <textarea className="form-control" onChange={handleChangeValue} aria-label="With textarea"></textarea>
             </div>
@@ -54,7 +57,7 @@ const TextBinaryConverter = ({url, type}) => {
                         <h4>¡Aquí tienes!</h4>
                         
                         <div className="d-flex flex-column mt-4 text-wrap">
-                            <p className="text-light text-break">Transformación: {type == "text" ? data.text_converted : type == "binary" ? data.binary_convert : undefined}</p>
+                            <p className="text-light text-break">Transformación: {type == "text_bin" ? data.text_converted : type == "bin_text" ? data.binary_convert : undefined}</p>
                         </div>
                         
                     </div>
@@ -68,10 +71,7 @@ const TextBinaryConverter = ({url, type}) => {
                 )
             }
         </div>
-
-        <div className="history d-flex justify-content-center mt-5 bg-light shadow p-3 mb-5 bg-body-tertiary rounded">
-            <h3 className="text-break">Historial de transformaciones</h3>
-        </div>
+        <DataRecords data={type} id={user.sub}/>
     </>
   )
 }

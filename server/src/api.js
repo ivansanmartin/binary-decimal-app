@@ -145,7 +145,6 @@ router.post("/api/decimal-binary/save-data", async (req, res) => {
     });
 });
 
-
 router.post("/api/text-binary/save-data", async (req, res) => {
     const data = req.body;
     const existProperties = verifyExistProperty(
@@ -168,7 +167,7 @@ router.post("/api/text-binary/save-data", async (req, res) => {
                 text_bin: {
                     text: data.fetch.text,
                     text_converted: data.fetch.text_converted,
-                    date_converted: data.fetch.conversion_date
+                    date_converted: data.fetch.conversion_date,
                 },
             },
         }
@@ -177,9 +176,32 @@ router.post("/api/text-binary/save-data", async (req, res) => {
     res.json({
         ok: true,
     });
+});
 
+router.post("/api/get-data", async (req, res) => {
+    const search = req.body.search;
+    const userId = req.body.id_auth0;
 
+    let findData;
+    switch (search) {
+        case "binary":
+            findData = await User.findOne({ id: userId }, { bin_dec: 1 });
+            res.json(findData);
 
-})
+            break;
+
+        case "decimal":
+            findData = await User.findOne({ id: userId }, { dec_bin: 1 });
+            res.json(findData);
+            break;
+
+        case "text_bin":
+            findData = await User.findOne({ id: userId }, { text_bin: 1 });
+            res.json(findData);
+            break;
+        default:
+            return "...";
+    }
+});
 
 module.exports = router;
