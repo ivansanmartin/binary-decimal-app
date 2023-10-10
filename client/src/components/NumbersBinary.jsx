@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import {DataRecords} from "../components/DataRecords"
 import useFetch from "src/useFetch";
 
 export const NumbersBinary = ({url, type}) => {
@@ -85,10 +86,7 @@ export const NumbersBinary = ({url, type}) => {
                 }
             </div>
 
-            <div className="history d-flex justify-content-center mt-5 bg-light shadow p-3 mb-5 bg-body-tertiary rounded">
-                <h3 className="text-break">Historial de transformaciones</h3>
-                        
-            </div>
+            <DataRecords data={type} id={user.sub}/>
             
         </>
     );

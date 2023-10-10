@@ -14,7 +14,7 @@ const TextBinary = () => {
             <p className="fw-light fs-6">Introduce el texto para transformar</p>
     
 
-            <TextBinaryConverter url="https://ivansanmartin.vercel.app/project/api/text_to_binary/" type="text"/>
+            <TextBinaryConverter url="https://ivansanmartin.vercel.app/project/api/text_to_binary/" type="text_bin"/>
 
           
         </>

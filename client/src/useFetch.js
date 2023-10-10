@@ -20,7 +20,7 @@ const useFetch = () => {
                 ? "http://localhost:3000/api/binary-decimal/save-data"
                 : dataFetch.typeNumber == "decimal"
                 ? "http://localhost:3000/api/decimal-binary/save-data"
-                : dataFetch.typeNumber == "text"
+                : dataFetch.typeNumber == "text_bin"
                 ? "http://localhost:3000/api/text-binary/save-data"
                 : undefined;
         setNumber(typeFetch);

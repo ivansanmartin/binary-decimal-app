@@ -20,6 +20,10 @@
     align-items: center;
 }
 
+.nav-root .links {
+    width: 80%;
+}
+
 .nav-root ul li a {
     text-decoration: none;
     word-wrap: break-word;
@@ -62,6 +66,26 @@
 
 .detail .text-transform textarea {
     height: 15vh;
+}
+
+.data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+
+}
+
+.data div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+}
+
+.data div li {
+    padding: 0;
+    list-style: none;
 }
 
 @media screen and (min-width: 1000px) {
