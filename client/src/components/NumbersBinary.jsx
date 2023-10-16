@@ -9,6 +9,12 @@ export const NumbersBinary = ({url, type}) => {
     const { user } = useAuth0();
     const {data, loading, error, setDataFetch} = useFetch()
 
+    useEffect(() => {
+        console.log(user.sub)
+        console.log(type)
+
+    }, [])
+
     const handleCheckedIpv4 = (e) => {
         setChecked(e.target.checked)
     }
@@ -86,7 +92,7 @@ export const NumbersBinary = ({url, type}) => {
                 }
             </div>
 
-            <DataRecords data={type} id={user.sub}/>
+            <DataRecords id={user.sub} search={type} refresh={data || false} loading={loading}/>
             
         </>
     );

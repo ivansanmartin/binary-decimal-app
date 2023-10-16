@@ -45,6 +45,7 @@ const useFetch = () => {
         if (data == null) {
             return;
         } else {
+            setLoading(true);
             fetch(typeFetch, {
                 method: "POST",
                 headers: {
@@ -56,9 +57,8 @@ const useFetch = () => {
                 }),
             })
                 .then((response) => response.json())
-                .then((error) => {
-                    console.log(error);
-                });
+                .then((error) => error.message)
+                .finally(() => setLoading(false))
         }
 
         // {ok: true, binary_number: '11111111', decimal_convert: '255', conversion_date: '24/9/2023'}
