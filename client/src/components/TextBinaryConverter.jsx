@@ -71,7 +71,7 @@ const TextBinaryConverter = ({url, type}) => {
                 )
             }
         </div>
-        <DataRecords data={type} id={user.sub}/>
+        <DataRecords id={user.sub} search={type} refresh={data || false} loading={loading}/>
     </>
   )
 }
