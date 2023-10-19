@@ -9,11 +9,6 @@ export const NumbersBinary = ({url, type}) => {
     const { user } = useAuth0();
     const {data, loading, error, setDataFetch} = useFetch()
 
-    useEffect(() => {
-        console.log(user.sub)
-        console.log(type)
-
-    }, [])
 
     const handleCheckedIpv4 = (e) => {
         setChecked(e.target.checked)
