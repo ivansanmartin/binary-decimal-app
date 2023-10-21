@@ -11,9 +11,7 @@ const BinaryText = () => {
             <div className="text-transform d-flex flex-column align-items-center">
                 <p className="fw-light fs-4">¿Que binario deseas convertir?</p>
 
-                <p className="fw-light fs-6">
-                    Introduce el binario
-                </p>
+                <p className="fw-light fs-6">Introduce el binario</p>
                 <div className="input-group mb-3">
                     <span
                         className="input-group-text"

@@ -1,5 +1,5 @@
 import React from "react";
-import TextBinaryConverter from "/src/components/TextBinaryConverter"
+import TextBinaryConverter from "/src/components/TextBinaryConverter";
 
 const TextBinary = () => {
     return (
@@ -12,11 +12,11 @@ const TextBinary = () => {
             <p className="fw-light fs-4">¿Que texto deseas convertir?</p>
 
             <p className="fw-light fs-6">Introduce el texto para transformar</p>
-    
 
-            <TextBinaryConverter url="https://ivansanmartin.vercel.app/project/api/text_to_binary/" type="text_bin"/>
-
-          
+            <TextBinaryConverter
+                url="https://ivansanmartin.vercel.app/project/api/text_to_binary/"
+                type="text_bin"
+            />
         </>
     );
 };
