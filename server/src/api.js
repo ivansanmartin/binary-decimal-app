@@ -185,18 +185,18 @@ router.post("/api/get-data", async (req, res) => {
     let findData;
     switch (search) {
         case "binary":
-            findData = await User.findOne({ id: userId }, { bin_dec: 1 });
+            findData = await User.findOne({ id: userId }, { bin_dec: 1, _id: 1 });
             res.json(findData);
 
             break;
 
         case "decimal":
-            findData = await User.findOne({ id: userId }, { dec_bin: 1 });
+            findData = await User.findOne({ id: userId }, { dec_bin: 1, _id: 1 });
             res.json(findData);
             break;
 
         case "text_bin":
-            findData = await User.findOne({ id: userId }, { text_bin: 1 });
+            findData = await User.findOne({ id: userId }, { text_bin: 1, _id: 1 });
             res.json(findData);
             break;
         default:
