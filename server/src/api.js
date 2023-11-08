@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema(
 
 const User = mongoose.model("User", userSchema);
 
+router.get("/", async (req, res) => {
+    res.send("DISABLED")
+})
+
 router.post("/api/save-user", async (req, res) => {
     const data = req.body;
 
