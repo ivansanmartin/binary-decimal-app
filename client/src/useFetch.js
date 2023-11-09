@@ -17,11 +17,11 @@ const useFetch = () => {
     useEffect(() => {
         let typeFetch =
             dataFetch.typeNumber == "binary"
-                ? "https://binarydecimal-api.vercel.app/api/binary-decimal/save-data"
+                ? "https://binary-decimal-server.vercel.app/api/binary-decimal/save-data"
                 : dataFetch.typeNumber == "decimal"
-                ? "https://binarydecimal-api.vercel.app/api/decimal-binary/save-data"
+                ? "https://binary-decimal-server.vercel.app/api/decimal-binary/save-data"
                 : dataFetch.typeNumber == "text_bin"
-                ? "https://binarydecimal-api.vercel.app/api/text-binary/save-data"
+                ? "https://binary-decimal-server.vercel.app/api/text-binary/save-data"
                 : undefined;
         setNumber(typeFetch);
     }, [dataFetch.typeNumber, dataFetch.url]);
