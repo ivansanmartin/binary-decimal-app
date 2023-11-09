@@ -80,6 +80,7 @@ function Root() {
                             <Link
                                 to="/dashboard/binary-to-text"
                                 className="btn btn-light text-break"
+                                disabled
                             >
                                 Binario a texto
                             </Link>
