@@ -15,7 +15,7 @@ export const DataRecords = ({ id, search, refresh, loading }) => {
         if (refresh.ok || !refresh) {
             if (!loading) {
                 setIsLoading(true);
-                fetch("https://binarydecimal-api.vercel.app/api/get-data", {
+                fetch("https://binary-decimal-server.vercel.app/api/get-data", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
