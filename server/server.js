@@ -1,5 +1,5 @@
 const express = require("express")
-const api = require("./src/api")
+const api = require("./api")
 const app = express()
 
 app.set("port", "3000")
