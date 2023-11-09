@@ -3,6 +3,7 @@ import React from "react";
 const BinaryText = () => {
     return (
         <>
+            <h1 className="text-primary fw-bold mb-5">PRÓXIMA ACTUALIZACIÓN</h1>
             <div className="title container-fluid d-flex flex-column align-items-center">
                 <h4>Transforma binario a texto.</h4>
                 <hr className="border border-primary border-2 opacity-50 w-100"></hr>
