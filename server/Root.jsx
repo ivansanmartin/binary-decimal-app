@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, useFetcher } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import SpinnerLoading from "../components/SpinnerLoading";
+import SpinnerLoading from "../client/src/components/SpinnerLoading";
 import "./../root.css";
 
 import axios from "axios";
