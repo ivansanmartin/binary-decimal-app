@@ -120,8 +120,12 @@
     }
     .detail .data {
         width: 60vh;
+        margin-left: 15vh;
+    }
 
-
+    .detail .data div li {
+        width: 90%;
+        
     }
 
     .history {
