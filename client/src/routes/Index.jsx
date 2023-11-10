@@ -25,11 +25,7 @@ function Index() {
                 <a href="/">Binary Decimal App</a>
             </div>
 
-            <div className="nav">
-                <a href="" className="">
-                    Características
-                </a>
-            </div>
+
 
             <div className="login-register">
                 {isAuthenticated ? (
