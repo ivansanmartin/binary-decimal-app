@@ -93,7 +93,7 @@ export const DataRecords = ({ id, search, refresh, loading }) => {
     return (
         <>
             <div
-                className="history d-flex justify-content-center mt-5 bg-light shadow p-3 mb-5 bg-body-tertiary rounded"
+                className="history d-flex justify-content-center w-100 mt-5 bg-light shadow p-3 mb-5 bg-body-tertiary rounded"
                 id="records"
             >
                 <h3 className="text-break">Historial de transformaciones</h3>
