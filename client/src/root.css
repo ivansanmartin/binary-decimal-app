@@ -120,7 +120,7 @@
     }
     .detail .data {
         width: 60vh;
-        margin-left: 15vh;
+        padding-left: 15vh;
     }
 
     .detail .data div li {
