@@ -1,7 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/Root.jsx";
 import BinaryDecimal from "./routes/BinaryDecimal.jsx";
