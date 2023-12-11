@@ -58,7 +58,7 @@ const useFetch = () => {
             })
                 .then((response) => response.json())
                 .then((error) => error.message)
-                .finally(() => setLoading(false))
+                .finally(() => setLoading(false));
         }
 
         // {ok: true, binary_number: '11111111', decimal_convert: '255', conversion_date: '24/9/2023'}
