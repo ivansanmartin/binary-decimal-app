@@ -99,93 +99,95 @@ export const DataRecords = ({ id, search, refresh, loading }) => {
                 <h3 className="text-break">Historial de transformaciones</h3>
             </div>
 
-            {dataFetch.length == 0 && !isLoading ? (
-                <div className="alert alert-warning">No existen registros</div>
-            ) : isLoading ? (
-                <SpinnerLoading />
-            ) : (
-                <div className="table-responsive">
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Dato</th>
-                                <th>Convertido</th>
-                                <th>Fecha</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            {
+                dataFetch.length == 0 && !isLoading ? (
+                    <div className="alert alert-warning">No existen registros</div>
+                )
+                :
+                isLoading ? (
+                    <SpinnerLoading />
+                ) : (
+                    <div className="data">
+                        <div>
+                            <h4 className="text-break">Dato</h4>
                             {chunkData[currentPage].map((value, index) => (
-                                <tr key={index}>
-                                    <td
-                                        className="text-break"
-                                        role="button"
-                                        onClick={() => {
-                                            if (value?.length > 10) {
+                                <li
+                                    className="mt-3 text-break"
+                                    key={index}
+                                    role="button"
+                                    onClick={() => {
+                                        if (value?.length > 10) {
+                                            if (expandedIndexes.includes(index)) {
+                                                setExpandedIndexes((prevIndexes) =>
+                                                    prevIndexes.filter(
+                                                        (i) => i !== index
+                                                    )
+                                                );
+                                            } else {
                                                 setExpandedIndexes(
-                                                    (prevIndexes) =>
-                                                        prevIndexes.includes(
-                                                            index
-                                                        )
-                                                            ? prevIndexes.filter(
-                                                                  (i) =>
-                                                                      i !==
-                                                                      index
-                                                              )
-                                                            : [
-                                                                  ...prevIndexes,
-                                                                  index,
-                                                              ]
+                                                    (prevIndexes) => [
+                                                        ...prevIndexes,
+                                                        index,
+                                                    ]
                                                 );
                                             }
-                                        }}
-                                    >
-                                        {value.length > 10 &&
-                                        !expandedIndexes.includes(index)
-                                            ? value.slice(0, 10) + "..."
-                                            : value}
-                                    </td>
-
-                                    <td
-                                        className="text-break"
-                                        role="button"
-                                        onClick={() => {
-                                            if (value?.length > 10) {
-                                                setExpandedIndexes2(
-                                                    (prevIndexes) =>
-                                                        prevIndexes.includes(
-                                                            index
-                                                        )
-                                                            ? prevIndexes.filter(
-                                                                  (i) =>
-                                                                      i !==
-                                                                      index
-                                                              )
-                                                            : [
-                                                                  ...prevIndexes,
-                                                                  index,
-                                                              ]
-                                                );
-                                            }
-                                        }}
-                                    >
-                                        {value?.length > 10 &&
-                                        !expandedIndexes2.includes(index)
-                                            ? value.slice(0, 10) + "..."
-                                            : value}
-                                    </td>
-
-                                    <td className="text-break">
-                                        {
-                                            dataFetch[currentPage][index]
-                                                ?.date_converted
                                         }
-                                    </td>
-                                </tr>
+                                    }}
+                                >
+                                    {value.length > 10 &&
+                                    !expandedIndexes.includes(index)
+                                        ? value.slice(0, 10) + "..."
+                                        : value}
+                                </li>
                             ))}
-                        </tbody>
-                    </table>
-                </div>
-            )}
+                        </div>
+    
+                        <div>
+                            <h4 className="text-break">Convertido</h4>
+    
+                            {chunkConverted[currentPage].map((value, index) => (
+                                <li
+                                    className="mt-3 text-break"
+                                    key={index}
+                                    role="button"
+                                    onClick={() => {
+                                        if (value.length > 10) {
+                                            if (expandedIndexes2.includes(index)) {
+                                                setExpandedIndexes2((prevIndexes) =>
+                                                    prevIndexes.filter(
+                                                        (i) => i !== index
+                                                    )
+                                                );
+                                            } else {
+                                                setExpandedIndexes2(
+                                                    (prevIndexes) => [
+                                                        ...prevIndexes,
+                                                        index,
+                                                    ]
+                                                );
+                                            }
+                                        }
+                                    }}
+                                >
+                                    {value?.length > 10 &&
+                                    !expandedIndexes2.includes(index)
+                                        ? value.slice(0, 10) + "..."
+                                        : value}
+                                </li>
+                            ))}
+                        </div>
+    
+                        <div>
+                            <h4 className="text-break">Fecha</h4>
+                            {dataFetch[currentPage].map((value, index) => (
+                                <li key={index} className="mt-3 text-break">
+                                    {value.date_converted}
+                                </li>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
 
             <nav aria-label="..." className="mt-5">
                 <ul className="pagination">

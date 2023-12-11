@@ -4,6 +4,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import SpinnerLoading from "../components/SpinnerLoading";
 import "./../root.css";
 
+import axios from "axios";
+
 function Root() {
     const { logout, isAuthenticated, isLoading, user } = useAuth0();
     const [randomPicture, setPicture] = useState("");
