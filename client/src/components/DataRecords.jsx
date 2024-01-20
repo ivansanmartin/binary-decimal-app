@@ -83,6 +83,9 @@ export const DataRecords = ({ id, search, refresh, loading }) => {
 
                         setChunkData(chunksData);
                         setChunkConverted(chunksConverted);
+
+                        console.log(chunkData);
+                        console.log(chunkConverted);
                     })
                     .catch((err) => err.message)
                     .finally(() => setIsLoading(false));
@@ -99,15 +102,12 @@ export const DataRecords = ({ id, search, refresh, loading }) => {
                 <h3 className="text-break">Historial de transformaciones</h3>
             </div>
 
-            {
-                dataFetch.length == 0 && !isLoading ? (
-                    <div className="alert alert-warning">No existen registros</div>
-                )
-                :
-                isLoading ? (
-                    <SpinnerLoading />
-                ) : (
-                    <div className="table-responsive">
+            {dataFetch.length == 0 && !isLoading ? (
+                <div className="alert alert-warning">No existen registros</div>
+            ) : isLoading ? (
+                <SpinnerLoading />
+            ) : (
+                <div className="table-responsive">
                     <table className="table">
                         <thead>
                             <tr>
@@ -124,53 +124,80 @@ export const DataRecords = ({ id, search, refresh, loading }) => {
                                         role="button"
                                         onClick={() => {
                                             if (value?.length > 10) {
-                                                setExpandedIndexes((prevIndexes) =>
-                                                    prevIndexes.includes(index)
-                                                        ? prevIndexes.filter(
-                                                              (i) => i !== index
-                                                          )
-                                                        : [...prevIndexes, index]
+                                                setExpandedIndexes(
+                                                    (prevIndexes) =>
+                                                        prevIndexes.includes(
+                                                            index
+                                                        )
+                                                            ? prevIndexes.filter(
+                                                                  (i) =>
+                                                                      i !==
+                                                                      index
+                                                              )
+                                                            : [
+                                                                  ...prevIndexes,
+                                                                  index,
+                                                              ]
                                                 );
                                             }
                                         }}
                                     >
                                         {value.length > 10 &&
                                         !expandedIndexes.includes(index)
-                                            ? value.slice(0, 10) + '...'
+                                            ? value.slice(0, 10) + "..."
                                             : value}
                                     </td>
-        
+
                                     <td
                                         className="text-break"
                                         role="button"
                                         onClick={() => {
-                                            if (value?.length > 10) {
-                                                setExpandedIndexes2((prevIndexes) =>
-                                                    prevIndexes.includes(index)
-                                                        ? prevIndexes.filter(
-                                                              (i) => i !== index
-                                                          )
-                                                        : [...prevIndexes, index]
+                                            if (
+                                                chunkConverted[currentPage]?.[
+                                                    index
+                                                ]?.length > 10
+                                            ) {
+                                                setExpandedIndexes2(
+                                                    (prevIndexes) =>
+                                                        prevIndexes.includes(
+                                                            index
+                                                        )
+                                                            ? prevIndexes.filter(
+                                                                  (i) =>
+                                                                      i !==
+                                                                      index
+                                                              )
+                                                            : [
+                                                                  ...prevIndexes,
+                                                                  index,
+                                                              ]
                                                 );
                                             }
                                         }}
                                     >
-                                        {value?.length > 10 &&
+                                        {chunkConverted[currentPage]?.[index]
+                                            ?.length > 10 &&
                                         !expandedIndexes2.includes(index)
-                                            ? value.slice(0, 10) + '...'
-                                            : value}
+                                            ? chunkConverted[currentPage][
+                                                  index
+                                              ].slice(0, 10) + "..."
+                                            : chunkConverted[currentPage]?.[
+                                                  index
+                                              ]}
                                     </td>
-        
+
                                     <td className="text-break">
-                                        {dataFetch[currentPage][index]?.date_converted}
+                                        {
+                                            dataFetch[currentPage]?.[index]
+                                                ?.date_converted
+                                        }
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-                )}
-
+            )}
 
             <nav aria-label="..." className="mt-5">
                 <ul className="pagination">
