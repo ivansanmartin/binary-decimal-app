@@ -27,7 +27,7 @@
 }
 
 main {
-    height: 100vh;
+    height: auto;
     margin: 30px;
 }
 
@@ -81,17 +81,76 @@ main .learn-more {
     margin-top: 30vh;
     display: flex;
     width: 100%;
+    justify-content: center;
     height: auto;
 }
 
 main .learn-more .info {
     display: flex;
-    width: 100%;
-    justify-content: center;
+    width: 50%;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 
 }
 
+footer {
+    display: flex;
+    width: 100%;
+    height: 20vh;
+    margin-top: 20vh;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+footer .info {
+    display: flex;
+    color: #848D97;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer .info h4 {
+    text-transform: uppercase;
+}
+
+footer .info p {
+    color: #848D97;
+}
+
+footer .links ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .links ul li a {
+    text-decoration: none;
+    color: #848D97;
+    font-size: 15px;
+}
+
+footer .links ul li a:hover {
+    color: #0A58CA;
+    text-decoration: underline;
+
+}
+
+footer .copyrights p {
+   color: #0A58CA;
+}
+
+
 @media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    main {
+        margin: 15px;
+    }
 
     main .app-information {
         flex-direction: column;
@@ -103,9 +162,21 @@ main .learn-more .info {
         width: 100%;
     }
 
+    main .app-information .title div {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+
+    }
+
     main .app-information .image {
         margin-top: 30px;
         width: 100%;
+    }
+
+    main .learn-more .info {
+        width: 100%;
+    
     }
 }
 
